@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ConsoleApplicationTest {
+public class ConsoleApplicationIT {
 
     //@Rule
     //public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
