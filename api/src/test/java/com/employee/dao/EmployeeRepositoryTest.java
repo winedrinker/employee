@@ -51,8 +51,7 @@ public class EmployeeRepositoryTest {
         final List<Employee> expected = new ArrayList<>();
         given(objectMapperMock.readerFor(any(TypeReference.class))).willReturn(objectReaderMock);
         given(objectReaderMock.with(DeserializationFeature.UNWRAP_ROOT_VALUE)).willReturn(objectReaderMock);
-        final ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        given(objectReaderMock.readValue(classloader.getResourceAsStream("employee.json"))).willReturn(employeeWrapperMock);
+        given(objectReaderMock.readValue(any(InputStream.class))).willReturn(employeeWrapperMock);
         given(employeeWrapperMock.getEmployees()).willReturn(expected);
         // WHEN
         final List<Employee> actual = underTest.getFromJsonFile();

@@ -2,14 +2,16 @@ package com.employee.domain;
 
 import java.util.Objects;
 
+import org.apache.commons.text.WordUtils;
+
 public class FullName {
 
     private final String firstName;
     private final String surnameName;
 
     public FullName(final String firstName, final String surnameName) {
-        this.firstName = firstName;
-        this.surnameName = surnameName;
+        this.firstName = WordUtils.capitalize(firstName);
+        this.surnameName =  WordUtils.capitalize(surnameName);
     }
 
     public String getFirstName() {
