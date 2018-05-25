@@ -1,5 +1,7 @@
 package com.employee;
 
+import static junit.framework.TestCase.fail;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,11 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ConsoleApplicationIT {
 
-    //@Rule
-    //public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
-
     @Test
     public void contextLoads() {
-
     }
 }
