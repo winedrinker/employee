@@ -3,6 +3,7 @@ package com.employee.domain;
 import java.util.Objects;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -17,12 +18,20 @@ public class Employee implements Comparable<Employee> {
     @JsonProperty("department")
     private Set<Department> departments;
 
+    public void setFullName(final FullName fullName) {
+        this.fullName = fullName;
+    }
+
     public FullName getFullName() {
         return fullName;
     }
 
     public Set<Department> getDepartments() {
         return departments;
+    }
+
+    public void setDepartments(final Set<Department> departments) {
+        this.departments = departments;
     }
 
     @Override
