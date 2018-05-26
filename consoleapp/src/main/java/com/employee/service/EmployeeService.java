@@ -1,27 +1,25 @@
 package com.employee.service;
 
-import static java.util.stream.Collectors.toList;
+import com.employee.dao.EmployeeRepository;
+import com.employee.domain.Department;
+import com.employee.domain.Employee;
+import com.employee.domain.FullName;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.inject.Inject;
-
-import org.springframework.stereotype.Service;
-
-import com.employee.dao.EmployeeRepository;
-import com.employee.domain.Department;
-import com.employee.domain.Employee;
-import com.employee.domain.FullName;
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
-    @Inject
+    @Autowired
     public EmployeeService(final EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }

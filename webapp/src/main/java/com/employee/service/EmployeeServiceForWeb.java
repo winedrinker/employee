@@ -1,17 +1,15 @@
 package com.employee.service;
 
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import javax.inject.Inject;
-
-import org.springframework.stereotype.Service;
-
 import com.employee.dao.EmployeeRepository;
 import com.employee.domain.Department;
 import com.employee.domain.Employee;
 import com.employee.domain.FullName;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Service to collect different employee related collections.
@@ -21,7 +19,7 @@ public class EmployeeServiceForWeb {
 
     private final EmployeeRepository employeeRepository;
 
-    @Inject
+    @Autowired
     public EmployeeServiceForWeb(final EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
@@ -30,7 +28,7 @@ public class EmployeeServiceForWeb {
      * Collects all {@link FullName}s sorted by last name.
      * @return list of full names
      */
-    public List<FullName> getAllFullNameSorted() {
+    public List<FullName> getAllFullNamesSorted() {
 
         final List<Employee> allEmployees = employeeRepository.getFromJsonFile();
         return allEmployees.stream().distinct().sorted().map(Employee::getFullName).collect(Collectors.toList());
@@ -55,7 +53,7 @@ public class EmployeeServiceForWeb {
     public List<Department> getDepartmentsForEmployee(final FullName fullName) {
 
         final List<Employee> allEmployees = employeeRepository.getFromJsonFile();
-        return allEmployees.stream().filter(employee -> employee.getFullName().equals(fullName)).map(Employee::getDepartments).flatMap(Set::stream).collect(
+        return allEmployees.stream().filter(employee -> employee.getFullName().equals(fullName)).map(Employee::getDepartments).flatMap(Set::stream).sorted().collect(
             Collectors.toList());
     }
 }
