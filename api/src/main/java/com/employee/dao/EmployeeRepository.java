@@ -1,26 +1,23 @@
 package com.employee.dao;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-
-import javax.inject.Inject;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.employee.domain.Employee;
 import com.employee.domain.EmployeeWrapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
 @Component
 public class EmployeeRepository {
 
     private final ObjectMapper objectMapper;
 
-    @Inject
+    @Autowired
     public EmployeeRepository(final ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }

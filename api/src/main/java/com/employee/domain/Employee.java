@@ -55,4 +55,11 @@ public class Employee implements Comparable<Employee> {
     public int hashCode() {
         return Objects.hash(fullName);
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "fullName=" + fullName +
+                '}';
+    }
 }

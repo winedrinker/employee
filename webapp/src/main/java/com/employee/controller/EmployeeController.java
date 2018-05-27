@@ -1,27 +1,25 @@
 package com.employee.controller;
 
-import java.util.List;
-
-import javax.inject.Inject;
-
+import com.employee.domain.Department;
+import com.employee.domain.Employee;
+import com.employee.domain.FullName;
+import com.employee.service.EmployeeServiceForWeb;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.employee.domain.Department;
-import com.employee.domain.Employee;
-import com.employee.domain.FullName;
-import com.employee.service.EmployeeServiceForWeb;
+import java.util.List;
 
 @RestController
 @EnableAutoConfiguration
 public class EmployeeController {
 
-    private EmployeeServiceForWeb employeeService;
+    private final EmployeeServiceForWeb employeeService;
 
-    @Inject
+    @Autowired
     public EmployeeController(EmployeeServiceForWeb employeeService) {
         this.employeeService = employeeService;
     }
@@ -29,7 +27,7 @@ public class EmployeeController {
     @GetMapping("/employee/sort")
     @ResponseBody
     public List<FullName> listEmployeeNamesSorted() {
-        return employeeService.getAllFullNameSorted();
+        return employeeService.getAllFullNamesSorted();
     }
 
     @GetMapping("/employee/{employee-first-name}/{employee-last-name}/department")
